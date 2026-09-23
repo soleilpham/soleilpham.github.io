@@ -1,5 +1,5 @@
 import { cn } from "../styles";
-import type { Publication } from "../data";
+import { profile, type Publication } from "../data";
 import { SmallCodeLink } from "./Buttons";
 import { CVIcon, GitHubIcon, YouTubeIcon } from "./Icons";
 
@@ -12,7 +12,7 @@ export function PublicationCard({ pub, index = 0 }: { pub: Publication; index?: 
         </div>
       )}
       <h3 className={cn.itemTitle}>{pub.title}</h3>
-      <p className={cn.itemBody}>{pub.authors}</p>
+      <p className={cn.itemBody}>{highlightName(pub.authors, profile.displayName)}</p>
       {(pub.paper || pub.video || pub.code) && (
         <div className={cn.itemLinks}>
           {pub.paper && <PubLink href={pub.paper} label="Paper" icon={<CVIcon size={13} />} />}
@@ -28,6 +28,13 @@ export function PublicationCard({ pub, index = 0 }: { pub: Publication; index?: 
 export function EqualContributionNote({ pubs }: { pubs: Publication[] }) {
   if (!pubs.some((p) => p.authors.includes("†"))) return null;
   return <p className={`mt-6 ${cn.mutedText}`}>† These authors contributed equally to this work.</p>;
+}
+
+/** Bolds every occurrence of `name` within an author list. */
+function highlightName(authors: string, name: string) {
+  return authors.split(name).flatMap((part, i) =>
+    i === 0 ? [part] : [<strong key={i} className="font-bold text-slate-900">{name}</strong>, part],
+  );
 }
 
 function PubLink({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
