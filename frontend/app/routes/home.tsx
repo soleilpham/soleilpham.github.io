@@ -1,8 +1,12 @@
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
-import { PageWrapper, Card, TagMuted, GitHubIcon, LinkedInIcon, EmailIcon } from "../components/ui";
+import {
+  PageWrapper,
+  ProjectCard,
+  PublicationCard,
+} from "../components/ui";
 import { cn } from "../styles";
-import { home, projects } from "../data";
+import { home, projects, publication } from "../data";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,72 +16,46 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const pubs = publication.comingSoon ? [] : publication.items;
+
   return (
     <PageWrapper>
       {/* Intro */}
-      <div className="mb-10">
+      <section className="mb-12">
         <p className={cn.sectionLabel}>Welcome</p>
-        <h1 className="text-3xl font-extrabold text-slate-900 mt-1 leading-tight">
+        <h1 className={cn.sectionTitle}>
           {home.greeting}
         </h1>
-        <p className="mt-4 text-sm text-slate-600 leading-relaxed max-w-lg">
-          {home.bio}
-        </p>
-      </div>
+        <div className="flex items-center gap-1 mt-3">
+          <div className="h-0.5 w-8 rounded-full bg-brand-amber" />
+          <div className="h-0.5 w-3 rounded-full bg-brand-coral" />
+        </div>
+        <p className={`mt-5 ${cn.bodyText} max-w-2xl`}>{home.bio}</p>
+      </section>
 
-      {/* Stats — staggered fade-up, alternating accent colors */}
-      {/* {(() => {
-        const accentColors = [
-          "text-brand-purple",
-          "text-brand-amber",
-          "text-brand-coral",
-          "text-brand-purple",
-        ] as const;
-        const topBorders = [
-          "border-t-2 border-t-brand-purple",
-          "border-t-2 border-t-brand-amber",
-          "border-t-2 border-t-brand-coral",
-          "border-t-2 border-t-brand-purple",
-        ] as const;
-        return (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
-            {home.stats.map(({ value, label }, i) => (
-              <div
-                key={label}
-                className={`text-center bg-white border border-brand-lavender/60 ${topBorders[i]} rounded-xl py-4 px-2 shadow-sm animate-fade-up`}
-                style={{ animationDelay: `${i * 60}ms` }}
-              >
-                <p className={`text-2xl font-extrabold ${accentColors[i]}`}>{value}</p>
-                <p className="text-xs text-slate-500 mt-1 leading-tight">{label}</p>
-              </div>
-            ))}
-          </div>
-        );
-      })()} */}
+      {pubs.length > 0 && (
+        <HomeSection label="Publications" to="/publication">
+          {pubs.map((pub, i) => <PublicationCard key={pub.title} pub={pub} index={i} />)}
+        </HomeSection>
+      )}
 
-      {/* Featured projects */}
-      <div className="mb-3 flex items-center justify-between">
-        <p className={cn.sectionLabel}>Featured Projects</p>
-        <Link to="/projects" className={cn.accentLink + " text-xs font-semibold"}>
+      <HomeSection label="Featured Projects" to="/projects">
+        {projects.slice(0, 3).map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
+      </HomeSection>
+    </PageWrapper>
+  );
+}
+
+function HomeSection({ label, to, children }: { label: string; to: string; children: React.ReactNode }) {
+  return (
+    <section className="mb-12">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className={cn.sectionLabel}>{label}</h2>
+        <Link to={to} className={`${cn.accentLink} text-sm font-semibold`}>
           View all →
         </Link>
       </div>
-      <div className="space-y-3 mb-10">
-        {projects.slice(0, 3).map((p) => (
-          <Card key={p.title} hover>
-            <h3 className="font-bold text-slate-900 text-sm mb-1">{p.title}</h3>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">{p.desc}</p>
-            <div className="flex flex-wrap gap-1.5">
-              {p.tags.map((t) => <TagMuted key={t}>{t}</TagMuted>)}
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      <p className="mt-14 text-xs text-slate-400 text-center">
-        © {new Date().getFullYear()} {/* fullName from profile could go here */}
-        Chan Nhu (Soleil) Nguyen Pham
-      </p>
-    </PageWrapper>
+      <div className={cn.itemList}>{children}</div>
+    </section>
   );
 }

@@ -7,7 +7,6 @@ import rawProfile     from "./portfolio/profile.json";
 import rawHome        from "./portfolio/home.json";
 import rawProjects    from "./portfolio/projects.json";
 import rawPublication from "./portfolio/publication.json";
-import rawCv          from "./portfolio/cv.json";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
 
@@ -46,23 +45,14 @@ export type Project = {
   youtube?: string;
 };
 
-export type Lab = {
-  name: string;
-  focus: string;
-  desc: string;
-};
-
 export type Publication = {
   title: string;
-  lab: string;
-  venue: string;
-  year: string;
-  desc: string;
-};
-
-export type QuickLink = {
-  label: string;
-  to: string;
+  authors: string;
+  conference: string;
+  /** URL, "TBA" (shown greyed out, unclickable), or omitted (hidden) */
+  paper?: string;
+  video?: string;
+  code?: string;
 };
 
 export type BlogPost = {
@@ -79,13 +69,9 @@ export type BlogPost = {
 export const profile   = rawProfile   as Profile;
 export const home      = rawHome      as { greeting: string; bio: string; stats: Stat[] };
 export const projects  = rawProjects  as Project[];
-export const publication = rawPublication as {
-  comingSoon: boolean;
-  labs: Lab[];
-  items: Publication[];
-};
-export const cv = rawCv as {
-  bio: string;
-  stats: Stat[];
-  quickLinks: QuickLink[];
+const rawPub = rawPublication as { comingSoon: boolean; items: Publication[] };
+export const publication = {
+  ...rawPub,
+  // Items titled "NAME" are placeholders — hidden until the title is final
+  items: rawPub.items.filter((p) => p.title !== "NAME"),
 };

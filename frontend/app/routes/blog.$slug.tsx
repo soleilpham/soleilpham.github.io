@@ -9,6 +9,12 @@ export function meta({ params }: Route.MetaArgs) {
   return [{ title: post ? `${post.title} — Soleil Pham` : "Post not found" }];
 }
 
+const backLink = (
+  <Link to="/blog" className={`${cn.accentLink} text-sm font-semibold`}>
+    ← Back to blog
+  </Link>
+);
+
 export default function BlogPost() {
   const { slug } = useParams();
   const post = posts.find((p) => p.slug === slug);
@@ -16,33 +22,27 @@ export default function BlogPost() {
   if (!post) {
     return (
       <PageWrapper>
-        <p className={cn.bodyText}>Post not found.</p>
-        <Link to="/blog" className={cn.accentLink + " text-xs font-semibold mt-4 inline-block"}>
-          ← Back to blog
-        </Link>
+        <p className={`${cn.bodyText} mb-4`}>Post not found.</p>
+        {backLink}
       </PageWrapper>
     );
   }
 
   return (
     <PageWrapper>
-      <div className="mb-6">
-        <Link to="/blog" className={cn.accentLink + " text-xs font-semibold"}>
-          ← Back to blog
-        </Link>
-      </div>
+      <div className="mb-6">{backLink}</div>
 
-      <div className="bg-white border border-brand-lavender/60 rounded-xl p-6 shadow-sm">
-        <p className={cn.mutedText + " mb-1"}>{post.date}</p>
-        <h1 className="text-2xl font-extrabold text-slate-900 mb-3">{post.title}</h1>
+      <article className={`${cn.card} p-5 sm:p-6`}>
+        <p className={`${cn.mutedText} mb-1`}>{post.date}</p>
+        <h1 className={`${cn.sectionTitle} mb-3`}>{post.title}</h1>
         {post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-5">
+          <div className={`${cn.itemTags} mb-5`}>
             {post.tags.map((t) => <TagMuted key={t}>{t}</TagMuted>)}
           </div>
         )}
-        <div className={cn.divider + " mb-5"} />
-        <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{post.content}</p>
-      </div>
+        <div className={`${cn.divider} mb-5`} />
+        <p className={`${cn.bodyText} text-slate-700 whitespace-pre-wrap`}>{post.content}</p>
+      </article>
     </PageWrapper>
   );
 }

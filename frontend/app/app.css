@@ -9,7 +9,7 @@
    coral    #FF6B6C  secondary accent — badges, warnings
    ──────────────────────────────────────────────────────────────────────── */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-brand-cream:    #FFFFFB;
@@ -21,9 +21,9 @@
 
 html {
   scroll-behavior: smooth;
-  /* Simulate the comfortable scale the user prefers at 125% browser zoom.
-     All rem-based Tailwind sizes scale proportionally with this. */
-  font-size: 18px;
+  /* Base size for the whole site. All rem-based Tailwind sizes
+     (text, spacing, widths) scale proportionally with this. */
+  font-size: 16px;
 }
 
 html,

@@ -1,6 +1,6 @@
 [
   {
-    "title": "PickleBall Match Footage Splicer",
+    "title": "Pickleball Match Footage Splicer",
     "desc": "A command-line tool that uses a YOLOv10 object-detection model to automatically identify rally segments in pickleball match footage and cut out the dead time between points. Built in Python with a TypeScript-based CLI layer and packaged with Docker for reproducible, one-command video processing. Designed to save players and coaches hours of manual film review by turning a full match recording into a tight reel of active play.",
     "tags": ["AI/ML", "Docker", "YOLOv10", "Python", "TypeScript", "Computer Vision", "Object Detection", "Video Processing", "CLI Tool"],
     "github": "https://github.com/soleilpham/match-splicer-cli",

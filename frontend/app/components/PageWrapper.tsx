@@ -1,3 +1,3 @@
 export function PageWrapper({ children }: { children: React.ReactNode }) {
-  return <div className="p-5 sm:p-7">{children}</div>;
+  return <div className="py-2 sm:py-4">{children}</div>;
 }

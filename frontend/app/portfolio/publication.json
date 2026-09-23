@@ -1,31 +1,32 @@
 {
-  "comingSoon": true,
-  "labs": [
-    { "name": "PurSec Lab"  },
-    { "name": "Snowball Lab" },
-    { "name": "CoRAL Lab"   }
-  ],
+  "comingSoon": false,
   "items": [
     {
-      "title": "Security and Privacy Implications of Large Language Models in Augmented Reality Applications",
-      "lab": "PurSec Lab",
-      "venue": "Under Review",
-      "year": "2025",
-      "desc": "Survey and empirical study on XR privacy risks and user security awareness regarding LLMs/VLMs integrated into AR applications."
+      "title": "NAME",
+      "authors": "Soleil Pham, Ahmed Qureshi",
+      "conference": "ACM MobiSys 2027",
+      "paper": "TBA",
+      "code": "TBA"
     },
     {
-      "title": "Dietary Classification from PPG and Accelerometer Signals Using Smart Earring Wearables",
-      "lab": "Snowball Lab",
-      "venue": "In Preparation",
-      "year": "2025",
-      "desc": "Predictive ML pipeline for classifying user dietary patterns using PPG signals and accelerometer data from custom-assembled smart earring wearables."
+      "title": "NAME",
+      "authors": "Chandrika Mukherjee†, Soleil Pham†, Doguhan Yeke, Habiba Farrukh, Z. Berkay Celik",
+      "conference": "S&P 2027",
+      "paper": "TBA"
     },
     {
-      "title": "Architectural Modifications to Foundation Models for Long-Horizon Robotic Task Planning",
-      "lab": "CoRAL Lab",
-      "venue": "In Preparation",
-      "year": "2025",
-      "desc": "Analysis of LLM and ML architectures, synthesizing techniques to enhance sequential task planning and execution in robotic manipulators."
+      "title": "NAME",
+      "authors": "Jang Lee, Soleil Pham, Sophia Huang, Aylen Kim, Qiuyue Xue",
+      "conference": "ACM MobiSys 2027",
+      "paper": "TBA",
+      "code": "TBA"
+    },
+    {
+      "title": "EarringBite: Automatic Eating Detection and Chewing Analysis with Smart Earrings",
+      "authors": "Feng Ye†, Soleil Pham†, Antara Durbha, Richard Li, Qiuyue Xue",
+      "conference": "ACM CHI 2027",
+      "paper": "TBA",
+      "code": "TBA"
     }
   ]
 }

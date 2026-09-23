@@ -24,8 +24,8 @@ export function ComingSoon({
           <polyline points="12 6 12 12 16 14" />
         </svg>
       </div>
-      <h2 className="text-xl font-extrabold text-slate-900 mb-2">{title}</h2>
-      <p className="text-sm text-slate-500 max-w-xs leading-relaxed">{message}</p>
+      <h2 className="text-xl font-bold text-slate-900 mb-2">{title}</h2>
+      <p className="text-base text-slate-500 max-w-sm leading-relaxed">{message}</p>
       <div className="mt-6 flex gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-brand-coral animate-bounce [animation-delay:0ms]" />
         <span className="w-1.5 h-1.5 rounded-full bg-brand-coral animate-bounce [animation-delay:150ms]" />

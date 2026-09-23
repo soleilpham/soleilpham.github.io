@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router";
+import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { cn } from "../styles";
 import { publicUrl } from "../utils";
 import { profile } from "../data";
@@ -14,8 +14,9 @@ import {
 } from "../components/ui";
 
 const NAV_LINKS = [
-  { to: "/projects",    label: "Projects"    },
-  { to: "/publication", label: "Publication" },
+  { to: "/",            label: "Home"         },
+  { to: "/projects",    label: "Projects"     },
+  { to: "/publication", label: "Publications" },
   { to: "/cv",          label: "CV"          },
   // { to: "/blog",        label: "Blog"        },
 ];
@@ -60,7 +61,7 @@ export default function Layout() {
       <header className="fixed top-0 inset-x-0 z-50 bg-brand-cream/90 backdrop-blur-md border-b border-brand-lavender/50">
         <nav
           aria-label="Primary navigation"
-          className="w-full px-5 sm:px-7 lg:px-10 h-14 flex items-center justify-between gap-4"
+          className={`${cn.container} h-14 flex items-center justify-between gap-4`}
         >
           {/* Brand — always visible */}
           <NavLink
@@ -77,12 +78,12 @@ export default function Layout() {
           </NavLink>
 
           {/* Desktop nav links — hidden on mobile */}
-          <div className="hidden lg:flex items-center gap-0.5" role="list">
+          <div className="hidden lg:flex items-center gap-0.5">
             {NAV_LINKS.map(({ to, label }) => (
               <NavLink
                 key={to}
                 to={to}
-                role="listitem"
+                end
                 className={({ isActive }) =>
                   isActive ? cn.navLinkActive : cn.navLink
                 }
@@ -123,18 +124,16 @@ export default function Layout() {
         {menuOpen && (
           <div
             id="mobile-menu"
-            role="menu"
-            aria-label="Mobile navigation"
             className="lg:hidden border-t border-brand-lavender/40 bg-brand-cream/95 backdrop-blur-md animate-fade-in"
           >
             {NAV_LINKS.map(({ to, label }) => (
               <NavLink
                 key={to}
                 to={to}
-                role="menuitem"
+                end
                 onClick={closeMenu}
                 className={({ isActive }) =>
-                  `block px-6 py-3 text-sm font-medium border-b border-brand-lavender/20 transition-colors ${
+                  `block px-6 py-3 text-base font-medium border-b border-brand-lavender/20 transition-colors ${
                     isActive
                       ? "text-brand-purple bg-brand-lavender/10"
                       : "text-slate-700 hover:text-brand-purple hover:bg-brand-lavender/10"
@@ -151,17 +150,15 @@ export default function Layout() {
       {/* ── Body ── */}
       {/*
         pt-20 = 80px offset from the fixed 56px navbar.
-        The sidebar uses sticky top-20 + max-h-[calc(100vh-5rem)] to stay
-        locked in the viewport once the user scrolls past the initial gap.
+        The sidebar scrolls with the page (no independent scroller).
       */}
-      <div className="w-full px-5 sm:px-7 lg:px-10 pt-20 pb-10 flex flex-col lg:flex-row gap-6 items-start">
+      <div className={`${cn.container} pt-20 pb-10 flex flex-col lg:flex-row gap-8 lg:gap-10 items-start`}>
 
-        {/* ── Left sidebar — locked on desktop ── */}
+        {/* ── Left sidebar ── */}
         {/* Sidebar: always visible on desktop; on mobile only shown on the home page */}
         <aside
-          aria-label="Profile and navigation"
-          role="complementary"
-          className={`w-full lg:w-72 shrink-0 lg:sticky lg:top-20 lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto ${
+          aria-label="Profile"
+          className={`w-full lg:w-72 shrink-0 ${
             isHome ? "block" : "hidden lg:block"
           }`}
         >
@@ -178,6 +175,9 @@ export default function Layout() {
           className="flex-1 min-w-0 animate-fade-up outline-none"
         >
           <Outlet />
+          <footer className={cn.footer}>
+            © {new Date().getFullYear()} {profile.fullName}
+          </footer>
         </main>
       </div>
     </div>
@@ -194,21 +194,20 @@ function ProfileCard() {
         <img
           src={publicUrl(profile.photo)}
           alt={`${profile.displayName} profile photo`}
-          width={128}
-          height={128}
-          // @ts-expect-error fetchpriority is a valid HTML attribute not yet in React types
-          fetchpriority="high"
-          className="w-28 h-28 rounded-full border-4 border-white shadow-md object-cover"
+          width={180}
+          height={180}
+          fetchPriority="high"
+          className="w-40 h-40 rounded-full border-4 border-white shadow-md object-cover"
         />
-        <h2 className="mt-3 font-bold text-slate-900 text-base leading-tight">
+        <h2 className="mt-3 font-bold text-slate-900 text-xl leading-tight">
           {profile.displayName}
         </h2>
-        <p className="text-xs text-slate-500 mt-0.5" aria-label="Full name">
+        <p className="text-sm text-slate-500 mt-0.5">
           {profile.fullName}
         </p>
         <div className="mt-3 flex flex-col items-center gap-1.5" aria-label="Roles">
           {profile.titles.map((t, i) => (
-            <p key={t} className="text-xs font-medium text-slate-700 flex items-center gap-1.5">
+            <p key={t} className="text-sm font-medium text-slate-700 flex items-center gap-1.5">
               <span
                 aria-hidden="true"
                 className={`w-1.5 h-1.5 rounded-full shrink-0 ${
@@ -234,10 +233,10 @@ function ProfileCard() {
             <LocationIcon size={14} />
           </span>
           <div>
-            <p className="font-semibold text-slate-800 text-xs leading-tight group-hover:text-brand-purple transition-colors">
+            <p className="font-semibold text-slate-800 text-sm leading-tight group-hover:text-brand-purple transition-colors">
               {profile.university}
             </p>
-            <p className="text-xs text-slate-500">{profile.location}</p>
+            <p className="text-sm text-slate-500">{profile.location}</p>
           </div>
         </a>
       </div>
@@ -245,26 +244,36 @@ function ProfileCard() {
       {/* Links */}
       <nav aria-label="Social and contact links">
         <div className="px-2 pb-3 border-t border-brand-lavender/30 pt-2 space-y-0.5">
-          {profile.links.map(({ label, sub, href, icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noreferrer" : undefined}
-              aria-label={`${label}: ${sub}`}
-              className={cn.profileLink}
-            >
-              <span aria-hidden="true" className={cn.profileLinkIcon}>
-                {ICON_MAP[icon]}
-              </span>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-slate-700 group-hover:text-slate-900 leading-tight">
+          {profile.links.map(({ label, sub, href, icon }) => {
+            const body = (
+              <>
+                <span aria-hidden="true" className={cn.profileLinkIcon}>
+                  {ICON_MAP[icon]}
+                </span>
+                <span className="text-sm font-semibold text-slate-700 group-hover:text-slate-900 shrink-0">
                   {label}
-                </p>
-                <p className="text-xs text-slate-500 truncate">{sub}</p>
-              </div>
-            </a>
-          ))}
+                </span>
+                <span className="ml-auto min-w-0 text-sm text-slate-500 truncate">{sub}</span>
+              </>
+            );
+            // Internal routes go through <Link> so the /source/ basename is applied
+            return href.startsWith("/") ? (
+              <Link key={label} to={href} aria-label={`${label}: ${sub}`} className={cn.profileLink}>
+                {body}
+              </Link>
+            ) : (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={`${label}: ${sub}`}
+                className={cn.profileLink}
+              >
+                {body}
+              </a>
+            );
+          })}
         </div>
       </nav>
 

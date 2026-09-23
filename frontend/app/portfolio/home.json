@@ -1,6 +1,6 @@
 {
   "greeting": "Hi, I'm Soleil",
-  "bio": "I'm a Computer Science student at Purdue University, concentrating in Machine Intelligence and Systems Software. I build ML pipelines, backend systems, and web applications — and lead ACM SIGAPP as president while conducting research across three labs.",
+  "bio": "I'm a Computer Science student at Purdue University, concentrating in Machine Intelligence and Systems Software. I build ML pipelines, backend systems, and web applications, serve as president of ACM SIGAPP, and conduct research across three labs.",
   "stats": [
     { "value": "3",   "label": "Research Labs"   },
     { "value": "10+", "label": "Projects"         },

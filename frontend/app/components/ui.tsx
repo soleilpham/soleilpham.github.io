@@ -39,6 +39,8 @@ export {
   ExternalLinkIcon,
 }                            from "./Icons";
 export { PageWrapper }       from "./PageWrapper";
+export { ProjectCard }       from "./ProjectCard";
+export { PublicationCard, EqualContributionNote } from "./PublicationCard";
 export { SectionHeader }     from "./SectionHeader";
 export { StatCard }          from "./StatCard";
 export { StatusBadge }       from "./StatusBadge";
