@@ -4,7 +4,7 @@
     {
       "title": "NAME",
       "authors": "Soleil Pham, Ahmed Qureshi",
-      "conference": "ACM MobiSys 2027",
+      "conference": "RSS 2027",
       "paper": "TBA",
       "code": "TBA"
     },
@@ -26,7 +26,7 @@
       "authors": "Feng Ye†, Soleil Pham†, Antara Durbha, Richard Li, Qiuyue Xue",
       "conference": "ACM CHI 2027",
       "paper": "TBA",
-      "code": "TBA"
+      "code": "https://github.com/soleilpham/earring-bite"
     }
   ]
 }
