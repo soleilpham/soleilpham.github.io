@@ -26,7 +26,7 @@
     },
     {
       "label": "CV",
-      "sub": "View résumé",
+      "sub": "View CV",
       "href": "/cv",
       "icon": "cv"
     },
