@@ -11,7 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
-  // Favicon — must use BASE_URL prefix so it resolves under /source/ on GitHub Pages
+  // Favicon — must use BASE_URL prefix so it resolves correctly if the base path changes
   { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico`, type: "image/x-icon" },
   // DNS + TLS handshake for Google Fonts before the stylesheet is parsed
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

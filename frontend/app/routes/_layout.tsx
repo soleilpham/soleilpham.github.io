@@ -256,7 +256,7 @@ function ProfileCard() {
                 <span className="ml-auto min-w-0 text-sm text-slate-500 truncate">{sub}</span>
               </>
             );
-            // Internal routes go through <Link> so the /source/ basename is applied
+            // Internal routes go through <Link> so the router basename is applied
             return href.startsWith("/") ? (
               <Link key={label} to={href} aria-label={`${label}: ${sub}`} className={cn.profileLink}>
                 {body}
