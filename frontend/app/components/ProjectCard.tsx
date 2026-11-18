@@ -1,34 +1,34 @@
 import { cn } from "../styles";
 import type { Project } from "../data";
-import { FlipCard } from "./FlipCard";
+import { DetailCard } from "./DetailCard";
 import { SmallCodeLink, SmallPrimaryLink } from "./Buttons";
 import { GitHubIcon, DevpostIcon, YouTubeIcon } from "./Icons";
 import { TagMuted } from "./Tags";
 
-/** Tags shown on the front; the rest are counted as "+N". */
-const FRONT_TAGS = 4;
-
 export function ProjectCard({ project: p, index = 0 }: { project: Project; index?: number }) {
-  const frontTags = p.tags.slice(0, FRONT_TAGS);
-  const moreTags = p.tags.length - frontTags.length;
+  const tags = (
+    <span className={cn.itemTags}>
+      {p.tags.map((t) => <TagMuted key={t}>{t}</TagMuted>)}
+    </span>
+  );
 
   return (
-    <FlipCard
+    <DetailCard
       label={p.title}
+      image={p.image}
+      imageAlt={`Screenshot of ${p.title}`}
       style={{ animationDelay: `${index * 40}ms` }}
-      front={
+      summary={
         <>
-          <h3 className={cn.itemTitle}>{p.title}</h3>
-          <div className={cn.itemTags}>
-            {frontTags.map((t) => <TagMuted key={t}>{t}</TagMuted>)}
-            {moreTags > 0 && <span className={cn.tagWhite}>+{moreTags}</span>}
-          </div>
+          <span className={`block ${cn.itemTitle}`}>{p.title}</span>
+          {tags}
         </>
       }
-      back={
+      details={
         <>
-          <h3 className="font-bold text-slate-900 text-base leading-snug mb-2">{p.title}</h3>
-          {p.desc && <p className="text-sm text-slate-600 leading-relaxed">{p.desc}</p>}
+          <h2 className={cn.itemTitle}>{p.title}</h2>
+          <div className="mb-4">{tags}</div>
+          {p.desc && <p className={cn.itemBody}>{p.desc}</p>}
           <ProjectLinks p={p} />
         </>
       }
@@ -37,7 +37,7 @@ export function ProjectCard({ project: p, index = 0 }: { project: Project; index
 }
 
 function ProjectLinks({ p }: { p: Project }) {
-  const any = p.github || p.githubBackend || p.githubFrontend || p.devpost || p.youtube || p.live;
+  const any = p.github || p.githubBackend || p.githubFrontend || p.devpost || p.youtube || p.itch || p.live;
   if (!any) return null;
   return (
     <div className={cn.itemLinks}>
@@ -66,6 +66,7 @@ function ProjectLinks({ p }: { p: Project }) {
           <YouTubeIcon size={13} /> Video
         </SmallCodeLink>
       )}
+      {p.itch && <SmallPrimaryLink href={p.itch}>Play on itch.io ↗</SmallPrimaryLink>}
       {p.live && <SmallPrimaryLink href={p.live}>Live ↗</SmallPrimaryLink>}
     </div>
   );

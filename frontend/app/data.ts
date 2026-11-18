@@ -43,6 +43,10 @@ export type Project = {
   live?: string;
   devpost?: string;
   youtube?: string;
+  /** itch.io game page */
+  itch?: string;
+  /** Thumbnail in /public, e.g. "projects/site-scouter.jpg" */
+  image?: string;
 };
 
 export type Publication = {

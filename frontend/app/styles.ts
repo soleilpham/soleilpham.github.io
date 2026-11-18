@@ -44,7 +44,7 @@ export const cn = {
 
   // ── List items (projects, publications, blog posts) ──
   itemList:   "space-y-6",
-  cardGrid:   "grid gap-5 sm:grid-cols-2 items-stretch",
+  cardGrid:   "columns-1 sm:columns-2 gap-5",
   itemCard:   "block bg-white border border-brand-lavender/60 rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-brand-lavender transition-all duration-200 animate-fade-up",
   itemTitle:  "font-bold text-slate-900 text-xl leading-snug mb-2",
   itemBody:   "text-base text-slate-600 leading-relaxed",
@@ -93,7 +93,7 @@ export const cn = {
     "after:h-0.5 after:bg-brand-coral after:scale-x-100 after:origin-left",
 
   // ── Profile sidebar ──
-  profileCardHeader: "bg-gradient-to-br from-brand-lavender/20 to-brand-purple/10 px-8 pt-8 pb-6 flex flex-col items-center text-center",
+  profileCardHeader: "brand-gradient px-8 pt-8 pb-6 flex flex-col items-center text-center",
   profileLink:       "flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-brand-lavender/20 transition-colors group",
   profileLinkIcon:   "text-brand-lavender group-hover:text-brand-purple transition-colors shrink-0",
 

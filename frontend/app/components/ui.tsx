@@ -7,7 +7,7 @@
  *   Card.tsx         — Card (optional hover variant)
  *   ComingSoon.tsx   — placeholder for in-progress sections
  *   Divider.tsx      — horizontal rule using brand-lavender
- *   FlipCard.tsx     — two-sided card: hover flips on desktop, tap flips on touch
+ *   DetailCard.tsx   — card (optional thumbnail) that opens a detail popup on click/tap
  *   Icons.tsx        — GitHubIcon, LinkedInIcon, EmailIcon, CVIcon, LeetCodeIcon,
  *                      LocationIcon, DownloadIcon, ExternalLinkIcon
  *   PageWrapper.tsx  — max-width content wrapper
@@ -27,7 +27,7 @@ export {
 export { Card }              from "./Card";
 export { ComingSoon }        from "./ComingSoon";
 export { Divider }           from "./Divider";
-export { FlipCard }          from "./FlipCard";
+export { DetailCard }        from "./DetailCard";
 export {
   GitHubIcon,
   LinkedInIcon,

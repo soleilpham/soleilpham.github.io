@@ -22,6 +22,7 @@
     "github": "https://github.com/Reversal9/catapult2026",
     "devpost": "https://devpost.com/software/site-scout",
     "youtube": "https://www.youtube.com/watch?v=PsACjryHSwQ",
+    "image": "projects/site-scouter.jpg",
     "live": "https://shorturl.at/4f8M9"
   },
   {
@@ -31,21 +32,30 @@
     "github": "https://github.com/soleilpham/hello-world-hack-24",
     "devpost": "https://devpost.com/software/roadie-rescue",
     "youtube": "https://www.youtube.com/watch?v=Ib8hYH-UxRY",
+    "image": "projects/roadie-rescue.jpg",
     "live": ""
   },
   {
     "title": "Save The Chicken",
-    "desc": "A quick reflex-testing arcade game built in Unity where players must react in time to halt Santa's sleigh before a chicken crosses the road. Built in C# using Unity's physics and animation systems, with the game exported to WebGL and playable directly in-browser via GitHub Pages.",
+    "desc": "A quick reflex-testing arcade game built in Unity where players must react in time to halt Santa's sleigh before a chicken crosses the road. Built in C# using Unity's physics and animation systems, with the game exported to WebGL and playable directly in-browser on itch.io.",
     "tags": ["C#", "Unity", "Game Development", "WebGL", "Reflex/Reaction Game"],
     "github": "https://github.com/soleilpham/save-chickens",
-    "live": "https://soleilpham.github.io/save-chickens-build/"
+    "itch": "https://unityimpact.itch.io/save-the-chicken",
+    "image": "projects/save-the-chicken.jpg"
+  },
+  {
+    "title": "Airplane Shooter",
+    "desc": "A short 3D arcade shooter built in Unity: pilot a biplane through a low-poly sky and shoot down incoming enemy planes while keeping track of score and health. Written in C# and exported to WebGL, so it plays directly in-browser on itch.io.",
+    "tags": ["C#", "Unity", "Game Development", "WebGL", "3D", "Shooter"],
+    "itch": "https://unityimpact.itch.io/airplane-shooter-game",
+    "image": "projects/airplane-shooter.jpg"
   },
   {
     "title": "Hexagon World",
-    "desc": "Procedural world-building simulation built in Unity that generates explorable terrain on a hexagonal grid system, inspired by strategy-game map generation. Written primarily in C# using Unity's engine and component system, with the interactive build exported to WebGL and hosted directly on GitHub Pages for anyone to try in-browser.",
+    "desc": "Procedural world-building simulation built in Unity that generates explorable terrain on a hexagonal grid system, inspired by strategy-game map generation. Written primarily in C# using Unity's engine and component system, with the interactive build exported to WebGL to run in the browser.",
     "tags": ["C#", "Unity", "Procedural Generation", "Hexagonal Grid", "WebGL", "Game Development"],
     "github": "https://github.com/soleilpham/hexagon-world",
-    "live": "https://soleilpham.github.io/hexagon-world-build/"
+    "image": "projects/hexagon-world.jpg"
   },
   {
     "title": "Talking Slides",
@@ -54,6 +64,7 @@
     "github": "https://github.com/soleilpham/TalkingSlides",
     "devpost": "https://devpost.com/software/talking-slides",
     "youtube": "https://www.youtube.com/watch?v=gHKCl0EinFo",
+    "image": "projects/talking-slides.jpg",
     "live": ""
   },
   {

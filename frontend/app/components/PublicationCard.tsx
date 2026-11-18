@@ -1,30 +1,34 @@
 import { cn } from "../styles";
 import { profile, type Publication } from "../data";
-import { FlipCard } from "./FlipCard";
+import { DetailCard } from "./DetailCard";
 import { SmallCodeLink } from "./Buttons";
 import { CVIcon, GitHubIcon, YouTubeIcon } from "./Icons";
 
 export function PublicationCard({ pub, index = 0 }: { pub: Publication; index?: number }) {
+  const venue = pub.conference !== "TBA" && (
+    <span className="block mb-3">
+      <span className={cn.tagLavender}>{pub.conference}</span>
+    </span>
+  );
+  const authors = highlightName(pub.authors, profile.displayName);
+
   return (
-    <FlipCard
+    <DetailCard
       label={pub.title}
       style={{ animationDelay: `${index * 60}ms` }}
-      front={
+      summary={
         <>
-          {pub.conference !== "TBA" && (
-            <div className="mb-3">
-              <span className={cn.tagLavender}>{pub.conference}</span>
-            </div>
-          )}
-          <h3 className={cn.itemTitle}>{pub.title}</h3>
+          {venue}
+          <span className={`block ${cn.itemTitle}`}>{pub.title}</span>
+          <span className="block text-sm text-slate-600 leading-relaxed">{authors}</span>
         </>
       }
-      back={
+      details={
         <>
-          <p className="text-sm font-bold text-brand-purple uppercase tracking-widest mb-2">Authors</p>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            {highlightName(pub.authors, profile.displayName)}
-          </p>
+          {venue}
+          <h2 className={cn.itemTitle}>{pub.title}</h2>
+          <p className="text-sm font-bold text-brand-purple uppercase tracking-widest mt-4 mb-1">Authors</p>
+          <p className={cn.itemBody}>{authors}</p>
           {(pub.paper || pub.video || pub.code) && (
             <div className={cn.itemLinks}>
               {pub.paper && <PubLink href={pub.paper} label="Paper" icon={<CVIcon size={13} />} />}
