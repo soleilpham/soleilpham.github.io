@@ -44,6 +44,7 @@ export const cn = {
 
   // ── List items (projects, publications, blog posts) ──
   itemList:   "space-y-6",
+  cardGrid:   "grid gap-5 sm:grid-cols-2 items-stretch",
   itemCard:   "block bg-white border border-brand-lavender/60 rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-brand-lavender transition-all duration-200 animate-fade-up",
   itemTitle:  "font-bold text-slate-900 text-xl leading-snug mb-2",
   itemBody:   "text-base text-slate-600 leading-relaxed",

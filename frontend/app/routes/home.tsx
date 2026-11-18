@@ -55,7 +55,7 @@ function HomeSection({ label, to, children }: { label: string; to: string; child
           View all →
         </Link>
       </div>
-      <div className={cn.itemList}>{children}</div>
+      <div className={cn.cardGrid}>{children}</div>
     </section>
   );
 }

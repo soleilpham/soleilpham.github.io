@@ -25,7 +25,7 @@ export default function Publication() {
         />
       ) : (
         <>
-          <div className={cn.itemList}>
+          <div className={cn.cardGrid}>
             {publication.items.map((pub, i) => (
               <PublicationCard key={pub.title} pub={pub} index={i} />
             ))}

@@ -11,7 +11,7 @@ export default function Projects() {
   return (
     <PageWrapper>
       <SectionHeader label="Projects" title="Things I've Built" />
-      <div className={cn.itemList}>
+      <div className={cn.cardGrid}>
         {projects.map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
       </div>
     </PageWrapper>

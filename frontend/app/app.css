@@ -97,3 +97,104 @@ body {
 .delay-150 { animation-delay: 150ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-250 { animation-delay: 250ms; }
+
+/* ─── Flip cards (components/FlipCard.tsx) ──────────────────────────────────
+   Both faces sit in the same grid cell, so the card takes the height of its
+   taller face. Precise pointers flip on hover; touch devices flip on tap
+   (the .is-flipped class). Keyboard users use the Details / Back buttons. */
+.flip-card {
+  perspective: 1400px;
+  display: grid;            /* lets the inner grid fill the row height */
+}
+.flip-card-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.flip-face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #fff;
+  border: 1px solid rgb(184 184 209 / 0.6);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+@media (min-width: 640px) {
+  .flip-face { padding: 1.5rem; }
+}
+.flip-front {
+  justify-content: center;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgb(255 193 69 / 0.14) 0%, transparent 55%),
+    linear-gradient(160deg, rgb(184 184 209 / 0.22) 0%, #fff 60%);
+}
+.flip-front::before {          /* amber + coral accent, matching the section headers */
+  content: "";
+  flex: none;
+  width: 2.75rem;
+  height: 0.2rem;
+  margin-bottom: 0.875rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #FFC145 0 65%, transparent 65% 72%, #FF6B6C 72%);
+}
+.flip-front .flip-button { margin-top: 1.25rem; padding-top: 0; }
+.flip-back {
+  transform: rotateY(180deg);
+}
+.flip-button { align-self: flex-start; margin-top: auto; padding-top: 1rem; }
+.flip-card.is-flipped .flip-card-inner,
+.flip-card:has(.flip-back:focus-within) .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Only the visible face takes clicks */
+.flip-back { pointer-events: none; }
+.flip-card.is-flipped .flip-front,
+.flip-card:has(.flip-back:focus-within) .flip-front { pointer-events: none; }
+.flip-card.is-flipped .flip-back,
+.flip-card:has(.flip-back:focus-within) .flip-back { pointer-events: auto; }
+
+/* Hint text: "Hover" on mouse devices, "Tap" on touch devices */
+.flip-hint-touch { display: none; }
+@media (hover: none), (pointer: coarse) {
+  .flip-hint-hover { display: none; }
+  .flip-hint-touch { display: inline; }
+  .flip-card { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card:hover .flip-face {
+    box-shadow: 0 4px 12px rgb(91 95 151 / 0.12);
+    border-color: #B8B8D1;
+  }
+  .flip-card:hover .flip-front { pointer-events: none; }
+  .flip-card:hover .flip-back { pointer-events: auto; }
+}
+
+/* Reduced motion: cross-fade instead of rotating */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner,
+  .flip-card.is-flipped .flip-card-inner,
+  .flip-card:hover .flip-card-inner {
+    transform: none;
+    transition: none;
+  }
+  .flip-face { transition: opacity 0.2s ease; }
+  .flip-back { transform: none; opacity: 0; }
+  .flip-card.is-flipped .flip-front,
+  .flip-card:has(.flip-back:focus-within) .flip-front { opacity: 0; }
+  .flip-card.is-flipped .flip-back,
+  .flip-card:has(.flip-back:focus-within) .flip-back { opacity: 1; }
+  .flip-card:has(.flip-back:focus-within) .flip-card-inner { transform: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .flip-card:hover .flip-front { opacity: 0; }
+    .flip-card:hover .flip-back { opacity: 1; }
+  }
+}

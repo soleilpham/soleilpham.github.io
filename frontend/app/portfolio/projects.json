@@ -68,8 +68,8 @@
     "title": "BoilerBuzz",
     "desc": "Cross-platform mobile social app that helps Purdue students discover campus events and clubs through shareable posters. The Express/TypeScript backend exposes a documented REST API (Swagger/OpenAPI) backed by PostgreSQL for posters, clubs, users, bookmarks, and search, while the Expo React Native frontend consumes that API on iOS, Android, and web with Clerk handling authentication. Built as a Purdue ACM SIGAPP team project with full CRUD, tag-based search, and role-based club administration.",
     "tags": ["Full-Stack", "Node.js", "PostgreSQL", "TypeScript", "React Native", "Express", "Expo", "Clerk Auth", "REST API", "Swagger/OpenAPI"],
-    "githubBackend": "https://github.com/Purdue-ACM-SIGAPP/boilerbuzz-backend",
-    "githubFrontend": "https://github.com/Purdue-ACM-SIGAPP/boilerbuzz-frontend",
+    "githubBackend": "https://github.com/Purdue-ACM-SIGAPP/boilerbuzz-backend-2526",
+    "githubFrontend": "https://github.com/Purdue-ACM-SIGAPP/boilerbuzz-frontend-2526",
     "live": ""
   },
   {
@@ -80,10 +80,11 @@
     "live": ""
   },
   {
-    "title": "Boiler Rooms — Backend",
-    "desc": "Backend API for a Purdue housing app that lets students view, rate, and review off-campus dorms and apartments on an interactive map. Built with ASP.NET Core 6 and MongoDB, it uses custom scope-based authorization handlers to secure endpoints and organizes logic across dedicated controller, service, and entity layers. Containerized with Docker and deployed via GitHub Actions CI/CD as part of a Purdue ACM SIGAPP team project.",
-    "tags": ["Backend", "C#", ".NET", "ASP.NET Core", "MongoDB", "Docker", "GitHub Actions", "REST API"],
-    "github": "https://github.com/Purdue-ACM-SIGAPP/BoilerRooms-backend",
+    "title": "BoilerCrib (formerly Boiler Rooms)",
+    "desc": "Campus building, housing, and event app built as a Purdue ACM SIGAPP team project. I lead the frontend team; on the ASP.NET Core and MongoDB backend I defined the building, housing, room, and event models and their CRUD endpoints, and simplified map-API coordinates into polygons that outline each building on the map. In 2026 I cleaned up both codebases and added a Docker-based local environment with seed data.",
+    "tags": ["Full-Stack", "C#", "ASP.NET Core", "MongoDB", "Expo", "React Native", "Docker", "REST API"],
+    "githubFrontend": "https://github.com/Purdue-ACM-SIGAPP/boilercrib-frontend",
+    "githubBackend": "https://github.com/Purdue-ACM-SIGAPP/boilercrib-backend",
     "live": ""
   }
 ]
