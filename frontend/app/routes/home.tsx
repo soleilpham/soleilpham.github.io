@@ -40,7 +40,7 @@ export default function Home() {
       )}
 
       <HomeSection label="Featured Projects" to="/projects">
-        {projects.slice(0, 3).map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
+        {projects.filter((p) => p.featured).map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
       </HomeSection>
     </PageWrapper>
   );

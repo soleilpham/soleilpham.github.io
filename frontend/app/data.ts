@@ -34,6 +34,10 @@ export type Stat = {
 
 export type Project = {
   title: string;
+  /** Start – end, e.g. "Sep 2024 – Present" */
+  date?: string;
+  /** Shown in "Featured Projects" on the home page */
+  featured?: boolean;
   desc: string;
   tags: string[];
   github?: string;

@@ -21,12 +21,14 @@ export function ProjectCard({ project: p, index = 0 }: { project: Project; index
       summary={
         <>
           <span className={`block ${cn.itemTitle}`}>{p.title}</span>
+          {p.date && <span className={`block -mt-1 mb-3 ${cn.mutedText}`}>{p.date}</span>}
           {tags}
         </>
       }
       details={
         <>
           <h2 className={cn.itemTitle}>{p.title}</h2>
+          {p.date && <p className={`-mt-1 mb-3 ${cn.mutedText}`}>{p.date}</p>}
           <div className="mb-4">{tags}</div>
           {p.desc && <p className={cn.itemBody}>{p.desc}</p>}
           <ProjectLinks p={p} />
